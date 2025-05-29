@@ -9,6 +9,7 @@ def load_csv_dataset():
     url = "https://huggingface.co/datasets/bitext/Bitext-customer-support-llm-chatbot-training-dataset/resolve/main/Bitext_Sample_Customer_Support_Training_Dataset_27K_responses-v11.csv"
     df = pd.read_csv(url)
     return df
+df_csdataset = load_csv_dataset()
 
 # Load dataset once and reuse
 df_csdataset = load_csv_dataset()
