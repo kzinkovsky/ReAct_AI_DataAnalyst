@@ -4,7 +4,14 @@ from openai import OpenAI
 from model import RetrieveTextInput, SummarizeTextInput, CountStructuredInput
 
 # Initialize the global variable with the data set as a data frame
-df_csdataset = pd.read_csv("hf://datasets/bitext/Bitext-customer-support-llm-chatbot-training-dataset/Bitext_Sample_Customer_Support_Training_Dataset_27K_responses-v11.csv")
+@st.cache_data
+def load_csv_dataset():
+    url = "https://huggingface.co/datasets/bitext/Bitext-customer-support-llm-chatbot-training-dataset/resolve/main/Bitext_Sample_Customer_Support_Training_Dataset_27K_responses-v11.csv"
+    df = pd.read_csv(url)
+    return df
+
+# Load dataset once and reuse
+df_csdataset = load_csv_dataset()
 
 # Initilize OpenAI object
 api_key = st.secrets["OPENAI_API_KEY"]
