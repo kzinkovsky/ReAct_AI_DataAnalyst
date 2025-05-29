@@ -14,12 +14,12 @@ def reset_session():
     st.session_state.step = 0
     st.session_state.session_active = True
 
-st.title("AI Data Analyst Interactive Chat (ReAct Agent)")
+st.title("AI Data Analyst Chat")
 
 st.markdown("""
-### About this AI Data Analyst Chat
+### About this Chat
 
-In this chat with an AI Data Analyst, you can explore the publicly available **Bitext dataset** — Customer Service Tagged Training Dataset for LLM-based Virtual Assistants  
+In this chat you can explore the publicly available **Bitext dataset** — Customer Service Tagged Training Dataset for LLM-based Virtual Assistants  
 [🔗 Dataset on HuggingFace](https://huggingface.co/datasets/bitext/Bitext-customer-support-llm-chatbot-training-dataset#bitext---customer-service-tagged-training-dataset-for-llm-based-virtual-assistants)
 
 The AI Data Analyst works with the following dataset fields:  

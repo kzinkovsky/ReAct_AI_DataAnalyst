@@ -31,7 +31,7 @@ A session lasts for up to 10 interaction steps or until restarted.
 
 To deploy and run this app on [Streamlit Cloud](https://share.streamlit.io):
 
-1. **Push your repository to GitHub.**
+1. **Push this repository to GitHub.**
 
 2. **Create a new app** on [Streamlit Cloud](https://share.streamlit.io), connecting it to your GitHub repository.
 
