@@ -1,6 +1,7 @@
 import streamlit as st
 from config import system_prompt
 from react_agent import process_user_query_react
+import json
 
 if "messages" not in st.session_state:
     st.session_state.messages = [{"role": "system", "content": system_prompt}]
@@ -66,9 +67,12 @@ else:
 
 st.write("---")
 
-with st.expander("Show conversation history"):
+with st.expander("Show short conversation history"):
     for i, msg in enumerate(st.session_state.messages):
         role = msg.get("role", "unknown").capitalize()
         content = msg.get("content", "")
         st.write(f"{i+1}. **{role}:**")
         st.text_area("", value=content, height=80, key=f"history_{i}")
+
+with st.expander("Show raw conversation JSON"):
+    st.code(json.dumps(st.session_state.messages, indent=2), language="json")
