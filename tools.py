@@ -12,13 +12,16 @@ def retrieve_text(input_data: RetrieveTextInput) -> list:
     number_rows = input_data.number_rows
     
     if field and condition_field and condition_class:
-        filtered_df = df_csdataset[df_csdataset[condition_field] == condition_class][field].head(number_rows)
+        #filtered_df = df_csdataset[df_csdataset[condition_field] == condition_class][field].head(number_rows)
+        filtered_df = df_csdataset[df_csdataset[condition_field] == condition_class][field].sample(n=number_rows)
 
     elif field:
-        filtered_df = df_csdataset[field].head(number_rows)
+        #filtered_df = df_csdataset[field].head(number_rows)
+        filtered_df = df_csdataset[field].sample(n=number_rows)
 
     else:
-        filtered_df = df_csdataset.head(number_rows)
+        #filtered_df = df_csdataset.head(number_rows)
+        filtered_df = df_csdataset.sample(n=number_rows)
 
     return filtered_df.tolist()
 

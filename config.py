@@ -59,5 +59,5 @@ Use the following process:
 
 If no relevant data exists or the query is out-of-scope, politely inform the user.
 
-If summarizing, always retrieve multiple entries before summarizing.
+If summarizing, always retrieve multiple entries before summarizing, with a minimum of 10 examples.
 """

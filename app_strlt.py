@@ -41,7 +41,7 @@ A session lasts for a maximum of 10 steps or until you restart it.
 
 if st.button("Restart Session"):
     reset_session()
-    #st.experimental_rerun()
+
 
 if st.session_state.session_active:
     with st.form(key="input_form", clear_on_submit=True):
