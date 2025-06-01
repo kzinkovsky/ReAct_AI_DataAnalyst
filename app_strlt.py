@@ -19,8 +19,6 @@ def main():
     st.title("AI Data Analyst Chat")
 
     st.markdown("""
-    ### About this Chat
-
     In this chat you can explore the publicly available **Bitext dataset** — Customer Service Tagged Training Dataset for LLM-based Virtual Assistants  
     [🔗 Dataset on HuggingFace](https://huggingface.co/datasets/bitext/Bitext-customer-support-llm-chatbot-training-dataset#bitext---customer-service-tagged-training-dataset-for-llm-based-virtual-assistants)
 
