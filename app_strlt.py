@@ -35,7 +35,7 @@ def main():
     - What is Intent distribution?  
     - Summarize how the agent responds to Intent CANCEL  
 
-    A session lasts for a maximum of 10 steps or until you restart it.
+    A session allows up to 10 user questions, including follow-up queries, or ends earlier if restarted.
     """)
 
     if st.button("Restart Session"):
