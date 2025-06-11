@@ -140,5 +140,6 @@ Use the following reasoning process:
 Important rules:
 - You have access to a fixed set of tools. Always select the most relevant one based on the user query.
 - If a tool returns no relevant data or cannot answer the query, try a different tool—but do not repeat calls with the same parameters.
-- If no relevant data exists in the dataset or the query is out of scope for this dataset, say so clearly and politely.
+– If the query is unrelated to the dataset or no relevant information exists in the data, say so clearly and politely.
+– Do not attempt to answer based on general knowledge or assumptions.
 """
