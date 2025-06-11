@@ -36,7 +36,7 @@ tools = [
         "type": "function",
         "function": {
             "name": "get_dataset_overview",
-            "description": "Get a high-level summary of the dataset, including total number of rows, available fields, and sample values",
+            "description": "Get name of dataset, total number of rows and column names",
             "parameters": DatasetOverview.model_json_schema()
         }
     },
@@ -60,7 +60,7 @@ tools = [
         "type": "function",
         "function": {
             "name": "count_intent",
-            "description": "Count how many records match the previously selected intent. Requires prior intent selection.",
+            "description": "Count how many records match the selected Intent class",
             "parameters": CountIntent.model_json_schema()
         }
     },
@@ -68,7 +68,7 @@ tools = [
         "type": "function",
         "function": {
             "name": "count_category",
-            "description": "Count how many records match the previously selected category. Requires prior category selection.",
+            "description": "Count how many records match the selected Category class",
             "parameters": CountCategory.model_json_schema()
         }
     },
@@ -100,7 +100,7 @@ tools = [
         "type": "function",
         "function": {
             "name": "show_examples",
-            "description": "Show N random examples from the dataset, optionally filtered by a specific field",
+            "description": "Display N random examples from the dataset with optionally filtered field",
             "parameters": ShowExamples.model_json_schema()
         }
     },
