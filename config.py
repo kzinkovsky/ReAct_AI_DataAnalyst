@@ -36,7 +36,7 @@ tools = [
         "type": "function",
         "function": {
             "name": "get_dataset_overview",
-            "description": "Get dataset overview",
+            "description": "Get a high-level summary of the dataset, including total number of rows, available fields, and sample values",
             "parameters": DatasetOverview.model_json_schema()
         }
     },
@@ -60,7 +60,7 @@ tools = [
         "type": "function",
         "function": {
             "name": "count_intent",
-            "description": "Count rows for selected intent. Requires prior intent selection.",
+            "description": "Count how many records match the previously selected intent. Requires prior intent selection.",
             "parameters": CountIntent.model_json_schema()
         }
     },
@@ -68,7 +68,7 @@ tools = [
         "type": "function",
         "function": {
             "name": "count_category",
-            "description": "Count rows for selected category. Requires prior category selection.",
+            "description": "Count how many records match the previously selected category. Requires prior category selection.",
             "parameters": CountCategory.model_json_schema()
         }
     },
@@ -76,7 +76,7 @@ tools = [
         "type": "function",
         "function": {
             "name": "sum_values",
-            "description": "Calculate the sum of numbers",
+            "description": "Calculate the sum of a list of numeric values",
             "parameters": SumValues.model_json_schema()
         }
     },
@@ -100,7 +100,7 @@ tools = [
         "type": "function",
         "function": {
             "name": "show_examples",
-            "description": "Show N examples from dataset or filtered by specific field (optional)",
+            "description": "Show N random examples from the dataset, optionally filtered by a specific field",
             "parameters": ShowExamples.model_json_schema()
         }
     },
@@ -108,7 +108,7 @@ tools = [
         "type": "function",
         "function": {
             "name": "summarize_text",
-            "description": "Summarize randomly selected N messages from a specified text field",
+            "description": "Generate a concise summary based on N randomly selected messages from a specified field",
             "parameters": SummarizeText.model_json_schema()
         }
     },
@@ -116,7 +116,7 @@ tools = [
         "type": "function",
         "function": {
             "name": "finish",
-            "description": "Indicate that the answer is complete",
+            "description": "Indicate that the task is complete and no further steps are needed",
             "parameters": Finish.model_json_schema()
         }
     }
