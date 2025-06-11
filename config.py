@@ -136,5 +136,7 @@ Use the following reasoning process:
 
 Rules:
 - Give a direct, brief answer to the query without extra commentary unless the user asks for it.
+- If the user asks for a list of categories, intents, or any other values in a dataset field, always use the specific tool that retrieves these values (not a general overview).
+- If the tool you choose doesn't give you an answer, always try at least one another tool.
 - If no relevant data exists or the query is out of scope, say so clearly and politely.
 """
