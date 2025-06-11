@@ -180,7 +180,7 @@ def show_examples(input_data: ShowExamples) -> dict:
         condition_status = "no condition (full dataset)"
 
     if target_field:
-        df_sample = df_source[target_field].sample(n=min(n, len(df_source)), random_state=42)
+        df_sample = df_source[[target_field]].sample(n=min(n, len(df_source)), random_state=42)
     else:
         df_sample = df_source.sample(n=min(n, len(df_source)), random_state=42)
 
@@ -213,8 +213,10 @@ def summarize_text(input_data: SummarizeText) -> dict:
     available_rows = len(df_filtered)
     if available_rows == 0:
         return {"error": f"No rows match condition: {condition_status}"}
+    
+    nmin = min(number_rows, available_rows)
 
-    df_sample = df_filtered.sample(n=min(number_rows, available_rows), random_state=42)
+    df_sample = df_filtered.sample(n=nmin, random_state=42)
     text = "\n".join(f"- {line}" for line in df_sample[text_field])
 
     prompt = f"""Here is a list of messages:\n{text}\n\nProvide a brief summary of the main themes they raise:"""
@@ -228,6 +230,7 @@ def summarize_text(input_data: SummarizeText) -> dict:
     return {
         "summarized_field": text_field,
         "conditions": condition_status,
+        "number of samples": nmin,
         "summary": response.choices[0].message.content.strip()
     }
 
