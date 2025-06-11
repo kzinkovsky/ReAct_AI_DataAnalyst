@@ -134,5 +134,9 @@ Use the following reasoning process:
 - Repeat Thought → Action → Observation if needed.
 - Final Answer: Only after enough observations, answer the user.
 
-Important rule: if no relevant data exists or the query is out of scope, say so clearly and politely.
+You have access to a fixed set of tools. Always select the most relevant one based on the user's query.
+If a tool call does not return the information needed to answer the question, do not repeat the same tool with the same parameters.
+Instead, reason step by step and try the next most relevant tool, based on what you have already learned.
+
+if no relevant data exists or the query is out of scope, say so clearly and politely.
 """
