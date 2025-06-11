@@ -1,7 +1,20 @@
 import pandas as pd
 import streamlit as st
 from openai import OpenAI
-from model import RetrieveTextInput, SummarizeTextInput, CountStructuredInput
+from model import (
+                   DatasetOverview, 
+                   SelectSemanticIntent, 
+                   SelectSemanticCategory, 
+                   CountIntent, CountCategory, 
+                   SumValues, 
+                   MultiplicationFloat, 
+                   DivisionFloat, 
+                   ShowExamples, 
+                   SummarizeText, 
+                   Finish,
+                   FunctionType, 
+                   FunctionInput 
+                   )
 
 # Initialize the variable with the data set as a data frame
 @st.cache_data
