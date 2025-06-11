@@ -1,6 +1,8 @@
 from config import df_csdataset, client
 import pandas as pd
 from model import (
+                   IntentClass,
+                   CategoryClass,
                    DatasetOverview, 
                    SelectSemanticIntent, 
                    SelectSemanticCategory, 
