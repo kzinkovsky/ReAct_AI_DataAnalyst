@@ -30,6 +30,9 @@ df_csdataset = load_csv_dataset()
 api_key = st.secrets["OPENAI_API_KEY"]
 client = OpenAI(api_key=api_key)
 
+# Define name of LLM model
+model_name = "gpt-4o-mini"
+
 # Initialize the variable with tools schema
 tools = [
      {
