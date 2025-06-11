@@ -135,9 +135,7 @@ Use the following reasoning process:
 - Final Answer: Only after enough observations, answer the user.
 
 Rules:
-- Be precise and brief. Do not guess.
-- Use tools to get data.
-- If no relevant data exists or the query is out of scope, say so clearly.
+- Give a direct, brief answer to the query without extra commentary unless the user asks for it.
 - If asked about the dataset (structure, size, fields, etc.), use the overview tool.
-- Do not add summaries, interpretations, or extra commentary unless the user asks for them.
+- If no relevant data exists or the query is out of scope, say so clearly.
 """
