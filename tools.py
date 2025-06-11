@@ -1,4 +1,4 @@
-from config import df_csdataset, client
+from config import df_csdataset, client, model_name
 import pandas as pd
 from model import (
                    IntentClass,
@@ -60,7 +60,7 @@ def select_semantic_intent(input_data: SelectSemanticIntent) -> dict:
 
     
     response = client.chat.completions.create(
-            model="gpt-4o-mini",
+            model=model_name,
             messages=messages,
             temperature=0
         )
@@ -102,7 +102,7 @@ def select_semantic_category(input_data: SelectSemanticCategory) -> dict:
 
     
     response = client.chat.completions.create(
-            model="gpt-4o-mini",
+            model=model_name,
             messages=messages,
             temperature=0
         )
@@ -222,7 +222,7 @@ def summarize_text(input_data: SummarizeText) -> dict:
     prompt = f"""Here is a list of messages:\n{text}\n\nProvide a brief summary of the main themes they raise:"""
 
     response = client.chat.completions.create(
-        model="gpt-4o-mini",
+        model=model_name,
         messages=[{"role": "user", "content": prompt}],
         temperature=0.5
     )

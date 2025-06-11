@@ -1,4 +1,4 @@
-from config import client, tools
+from config import client, model_name, tools
 import json
 from model import (
                    DatasetOverview, 
@@ -61,7 +61,7 @@ def process_user_query_react(messages: list) -> tuple[str, list]:
 
     for step in range(20):  # think-observe-react step limit
         response = client.chat.completions.create(
-            model="gpt-4o-mini",
+            model=model_name,
             messages=messages,
             tools=tools,
             tool_choice="auto",
