@@ -136,6 +136,5 @@ Use the following reasoning process:
 
 Rules:
 - Give a direct, brief answer to the query without extra commentary unless the user asks for it.
-- If asked about the dataset (structure, size, fields, etc.), use the overview tool.
-- If no relevant data exists or the query is out of scope, say so clearly.
+- If no relevant data exists or the query is out of scope, say so clearly and politely.
 """
