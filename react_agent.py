@@ -1,17 +1,59 @@
-from model import RetrieveTextInput, SummarizeTextInput, CountStructuredInput, FunctionType, FunctionInput
 from config import client, tools
-from tools import retrieve_text, summarize_text, count_structured
 import json
+from model import (
+                   DatasetOverview, 
+                   SelectSemanticIntent, 
+                   SelectSemanticCategory, 
+                   CountIntent, CountCategory, 
+                   SumValues, 
+                   MultiplicationFloat, 
+                   DivisionFloat, 
+                   ShowExamples, 
+                   SummarizeText, 
+                   Finish,
+                   FunctionType, 
+                   FunctionInput 
+                   )
+from tools import (
+                   get_dataset_overview,
+                   select_semantic_intent,
+                   select_semantic_category,
+                   count_intent,
+                   count_category,
+                   sum_values,
+                   multiplication_float,
+                   division_float,
+                   show_examples,
+                   summarize_text,
+                   finish
+                   )
 
 # The function to route inputs to an appropriate tool
+
 def execute_function(function_call: FunctionType) -> dict:
 
-    if isinstance(function_call, RetrieveTextInput):
-        return retrieve_text(function_call)
-    elif isinstance(function_call, SummarizeTextInput):
+    if isinstance(function_call, DatasetOverview):
+        return get_dataset_overview(function_call)
+    elif isinstance(function_call, SelectSemanticIntent):
+        return select_semantic_intent(function_call)
+    elif isinstance(function_call, SelectSemanticCategory):
+        return select_semantic_category(function_call)
+    elif isinstance(function_call, CountIntent):
+        return count_intent(function_call)
+    elif isinstance(function_call, CountCategory):
+        return count_category(function_call)
+    elif isinstance(function_call, SumValues):
+        return sum_values(function_call)
+    elif isinstance(function_call, MultiplicationFloat):
+        return multiplication_float(function_call)
+    elif isinstance(function_call, DivisionFloat):
+        return division_float(function_call)
+    elif isinstance(function_call, ShowExamples):
+        return show_examples(function_call)
+    elif isinstance(function_call, SummarizeText):
         return summarize_text(function_call)
-    elif isinstance(function_call, CountStructuredInput):
-        return count_structured(function_call)
+    elif isinstance(function_call, Finish):
+        return finish(function_call)
 
 # The ReAct Agent function
 def process_user_query_react(messages: list) -> tuple[str, list]:
