@@ -1,6 +1,6 @@
 import enum
 from typing import Optional, Union, List, Literal
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, field_validator, model_validator
 
 # Classes with Enums for constrained values
 
@@ -54,36 +54,78 @@ class IntentClass(str, enum.Enum):
     TRACK_ORDER = 'track_order'
     TRACK_REFUND = 'track_refund'
 
-class CountOperation(str, enum.Enum):
-    LIST_UNIQUE = 'list_unique'
-    UNIQUE_COUNT = 'unique_count'
-    DISRIBUTION = 'distribution'
-    CLASS_COUNT = 'class_count'
-    MOST_COMMON = 'most_common'
-    LEAST_FREQUENT = 'least_frequent'
-
 # Pydantic models for function inputs
 
-class RetrieveTextInput(BaseModel):
-    function_type: Literal["retrieve_text"]
+class DatasetOverview(BaseModel):
+    function_type: Literal["get_dataset_overview"]
+
+class SelectSemanticIntent(BaseModel):
+    function_type: Literal["select_semantic_intent"]
+    query: str
+
+class SelectSemanticCategory(BaseModel):
+    function_type: Literal["select_semantic_category"]
+    query: str
+
+class CountIntent(BaseModel):
+    function_type: Literal["count_intent"]
+    intent_class: IntentClass
+
+class CountCategory(BaseModel):
+    function_type: Literal["count_category"]
+    category_class: CategoryClass
+
+class SumValues(BaseModel):
+    function_type: Literal["sum_values"]
+    values: List[float]
+
+class MultiplicationFloat(BaseModel):
+    function_type: Literal["multiplication_float"]
+    a: float
+    b: float
+
+class DivisionFloat(BaseModel):
+    function_type: Literal["division_float"]
+    numerator: float
+    denominator: float
+
+    @model_validator(mode="after")
+    def check_denominator_not_zero(self) -> "DivisionFloat":
+        if self.denominator == 0:
+            raise ValueError("Denominator cannot be zero")
+        return self
+
+class ShowExamples(BaseModel):
+    function_type: Literal["show_examples"]
     target_field: Optional[UnstructedField] = None
     condition_field: Optional[StructedField] = None
-    condition_class: Optional[Union[CategoryClass, IntentClass]] = None
-    number_rows: int = 1
-
-class SummarizeTextInput(BaseModel):
+    condition_field_value: Optional[Union[CategoryClass, IntentClass]] = None
+    number_rows: int = Field(default=3, le=7)
+                             
+class SummarizeText(BaseModel):
     function_type: Literal["summarize_text"]
-    text_list: List[str]
+    text_field: Optional[UnstructedField] = None
+    condition_field: Optional[StructedField] = None
+    condition_field_value: Optional[Union[CategoryClass, IntentClass]] = None
+    number_rows: int = 10
 
-class CountStructuredInput(BaseModel):
-    function_type: Literal["count_structured"]
-    target_field: StructedField
-    count_operation: CountOperation
-    target_class: Optional[Union[CategoryClass, IntentClass]] = None
+class Finish(BaseModel):
+    function_type: Literal["finish"]
 
 # Discriminated union for function inputs
 
-FunctionType = Union[RetrieveTextInput, SummarizeTextInput, CountStructuredInput]
+FunctionType = Union[
+                     DatasetOverview, 
+                     SelectSemanticIntent, 
+                     SelectSemanticCategory, 
+                     CountIntent, CountCategory, 
+                     SumValues, 
+                     MultiplicationFloat, 
+                     DivisionFloat, 
+                     ShowExamples, 
+                     SummarizeText, 
+                     Finish
+                     ]
 
 class FunctionInput(BaseModel):
     function_call: FunctionType = Field(discriminator="function_type")

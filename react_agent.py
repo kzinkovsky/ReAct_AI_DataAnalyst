@@ -17,7 +17,7 @@ def execute_function(function_call: FunctionType) -> dict:
 def process_user_query_react(messages: list) -> tuple[str, list]:
     """ReAct agent to process user queries interactively."""
 
-    for step in range(7):  # think-observe-react step limit
+    for step in range(20):  # think-observe-react step limit
         response = client.chat.completions.create(
             model="gpt-4o-mini",
             messages=messages,
