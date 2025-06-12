@@ -30,9 +30,9 @@ def main():
     **Example questions you can ask the AI Data Analyst:**  
     - What categories exist?  
     - What are the most frequent categories?  
-    - Show 3 examples of responses for Category CANCEL  
+    - Show 3 examples of responses for Category ORDER  
     - What is Intent distribution?  
-    - Summarize how the agent responds to Intent CANCEL  
+    - Summarize how the agent responds to Intent complaint  
 
     A session allows up to 10 user questions, including follow-up queries, or ends earlier if restarted.
     """)
