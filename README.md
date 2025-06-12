@@ -21,7 +21,7 @@ Typical questions you can ask:
 - What are the most frequent categories?  
 - Show 3 examples of responses for Category CANCEL  
 - What is Intent distribution?  
-- Summarize how the agent responds to Intent CANCEL  
+- Summarize how the agent responds to Intent complaint  
 
 A session lasts for up to 10 interaction steps or until restarted.
 
